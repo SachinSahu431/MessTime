@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'pages/details/MessCard.dart';
 import 'pages/details/MessCardDeck.dart';
 
+import 'pages/Data/NutritionX.dart';
+
 void main() => runApp(ClientApp());
 
 class ClientApp extends StatelessWidget {

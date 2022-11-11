@@ -25,35 +25,33 @@ class MessCardDeck extends StatelessWidget {
           elevation: 0.0,
           color: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-          child: Container(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Nutrient Analysis",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "20/30",
-                          style: TextStyle(color: Colors.green, fontSize: 20.0),
-                          textAlign: TextAlign.end,
-                        )
-                      ],
-                    ),
-                    NutrientChart(
-                        carbPercentage: 20,
-                        proteinPercentage: 4,
-                        vitaminPercentage: 36,
-                        fatPercentage: 40),
-                  ],
-                )),
-          ),
+          child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Nutrient Analysis",
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "20/30",
+                        style: TextStyle(color: Colors.green, fontSize: 20.0),
+                        textAlign: TextAlign.end,
+                      )
+                    ],
+                  ),
+                  NutrientChart(
+                      carbPercentage: 20,
+                      proteinPercentage: 4,
+                      vitaminPercentage: 36,
+                      fatPercentage: 40),
+                ],
+              )),
         )
       ]),
     );
