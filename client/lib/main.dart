@@ -19,7 +19,7 @@ class ClientApp extends StatelessWidget {
       title: 'Client App',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(child: DisplayMenu()),
+        body: Center(child: MessCardDeck()),
       ),
     );
   }
