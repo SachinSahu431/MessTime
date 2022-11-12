@@ -6,6 +6,7 @@ import 'pages/details/MessCardDeck.dart';
 import 'pages/Data/Nutrients.dart';
 
 import 'pages/Data/NutritionX.dart';
+import 'pages/DisplayMenu.dart';
 
 void main() => runApp(ClientApp());
 
@@ -18,7 +19,7 @@ class ClientApp extends StatelessWidget {
       title: 'Client App',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(child: MessCardDeck()),
+        body: Center(child: DisplayMenu()),
       ),
     );
   }
