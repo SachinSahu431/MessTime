@@ -3,6 +3,7 @@ import 'package:client/pages/details/MessCardDeck.dart';
 import 'package:flutter/material.dart';
 import 'pages/details/MessCard.dart';
 import 'pages/details/MessCardDeck.dart';
+import 'pages/Data/Nutrients.dart';
 
 import 'pages/Data/NutritionX.dart';
 

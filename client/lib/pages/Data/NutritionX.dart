@@ -3,10 +3,11 @@ import 'dart:convert';
 import '../../auth/Secrets.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'menu.dart';
 
 //calorie data from nutrionx api
 
-Future<CalorieData> fetchCalorieData() async {
+Future<CalorieData> fetchCalorieData(String foodName) async {
   final response = await http.post(
       Uri.parse('https://trackapi.nutritionix.com/v2/natural/nutrients'),
       headers: {
@@ -15,7 +16,7 @@ Future<CalorieData> fetchCalorieData() async {
         'x-remote-user-id': '0'
       },
       body: {
-        'query': 'dal'
+        'query': '$foodName',
       });
 
   if (response.statusCode == 200) {
@@ -77,43 +78,76 @@ class CalorieData {
   }
 }
 
+// nutritionx widget with two parameters
+
 class NutritionX extends StatefulWidget {
-  const NutritionX({Key? key}) : super(key: key);
+  final int day;
+  final int meal;
+
+  const NutritionX({Key? key, required this.day, required this.meal})
+      : super(key: key);
 
   @override
   _NutritionXState createState() => _NutritionXState();
 }
 
 class _NutritionXState extends State<NutritionX> {
-  Future<CalorieData>? futureCalorieData;
+  late Future<CalorieData> futureCalorieData;
 
   @override
   void initState() {
     super.initState();
-    futureCalorieData = fetchCalorieData();
+    var foodName = "Dal";
+
+    // get food name from menu.dart
+    var dayMenu = menu[widget.day];
+
+    if (dayMenu != null) {
+      var mealMenu = dayMenu[widget.meal];
+      if (mealMenu != null) {
+        foodName = mealMenu[0];
+      }
+    }
+
+    futureCalorieData = fetchCalorieData(foodName);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('NutritionX'),
-      ),
-      body: Center(
-        child: FutureBuilder<CalorieData>(
-          future: futureCalorieData,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data!.food_name);
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
+    return FutureBuilder<CalorieData>(
+      future: futureCalorieData,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Column(
+            children: [
+              Text(
+                snapshot.data!.food_name,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text('Calories: ${snapshot.data!.nf_calories}'),
+              Text('Total Fat: ${snapshot.data!.nf_total_fat}'),
+              Text('Saturated Fat: ${snapshot.data!.nf_saturated_fat}'),
+              Text('Cholesterol: ${snapshot.data!.nf_cholesterol}'),
+              Text('Sodium: ${snapshot.data!.nf_sodium}'),
+              Text(
+                  'Total Carbohydrate: ${snapshot.data!.nf_total_carbohydrate}'),
+              Text('Dietary Fiber: ${snapshot.data!.nf_dietary_fiber}'),
+              Text('Sugars: ${snapshot.data!.nf_sugars}'),
+              Text('Protein: ${snapshot.data!.nf_protein}'),
+              Text('Potassium: ${snapshot.data!.nf_potassium}'),
+              Text('P: ${snapshot.data!.nf_p}'),
+            ],
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
 
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
-        ),
-      ),
+        // By default, show a loading spinner.
+        return const CircularProgressIndicator();
+      },
     );
   }
 }
