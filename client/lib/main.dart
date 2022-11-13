@@ -8,7 +8,7 @@ import 'pages/Data/Nutrients.dart';
 import 'pages/Data/NutritionX.dart';
 import 'pages/DisplayMenu.dart';
 
-void main() => runApp(MyHomePage(title: "Mess Time"));
+void main() => runApp(const ClientApp());
 
 class ClientApp extends StatelessWidget {
   const ClientApp({Key? key}) : super(key: key);
