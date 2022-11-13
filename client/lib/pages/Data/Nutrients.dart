@@ -101,7 +101,11 @@ class _MenuOptionState extends State<MenuOption> {
           },
         ),
         const SizedBox(height: 20),
-        NutritionX(day: dayToInt(_selectedDay), meal: mealToInt(_selectedMeal)),
+        NutritionX(
+          day: dayToInt(_selectedDay),
+          meal: mealToInt(_selectedMeal),
+          index: 0,
+        ),
       ],
     );
   }

@@ -83,8 +83,10 @@ class CalorieData {
 class NutritionX extends StatefulWidget {
   final int day;
   final int meal;
+  final int index;
 
-  const NutritionX({Key? key, required this.day, required this.meal})
+  const NutritionX(
+      {Key? key, required this.day, required this.meal, required this.index})
       : super(key: key);
 
   @override
@@ -105,7 +107,7 @@ class _NutritionXState extends State<NutritionX> {
     if (dayMenu != null) {
       var mealMenu = dayMenu[widget.meal];
       if (mealMenu != null) {
-        foodName = mealMenu[0];
+        foodName = mealMenu[widget.index];
       }
     }
 
@@ -118,35 +120,79 @@ class _NutritionXState extends State<NutritionX> {
       future: futureCalorieData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Column(
-            children: [
-              Text(
-                snapshot.data!.food_name,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+          //show the data at the center of the screen
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Food Name: ${snapshot.data!.food_name}',
+                  style: TextStyle(fontSize: 20),
                 ),
-              ),
-              Text('Calories: ${snapshot.data!.nf_calories}'),
-              Text('Total Fat: ${snapshot.data!.nf_total_fat}'),
-              Text('Saturated Fat: ${snapshot.data!.nf_saturated_fat}'),
-              Text('Cholesterol: ${snapshot.data!.nf_cholesterol}'),
-              Text('Sodium: ${snapshot.data!.nf_sodium}'),
-              Text(
-                  'Total Carbohydrate: ${snapshot.data!.nf_total_carbohydrate}'),
-              Text('Dietary Fiber: ${snapshot.data!.nf_dietary_fiber}'),
-              Text('Sugars: ${snapshot.data!.nf_sugars}'),
-              Text('Protein: ${snapshot.data!.nf_protein}'),
-              Text('Potassium: ${snapshot.data!.nf_potassium}'),
-              Text('P: ${snapshot.data!.nf_p}'),
-            ],
+                Text(
+                  'Serving Unit: ${snapshot.data!.serving_unit}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Serving Quantity: ${snapshot.data!.serving_qty}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Calories: ${snapshot.data!.nf_calories}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Total Fat: ${snapshot.data!.nf_total_fat}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Saturated Fat: ${snapshot.data!.nf_saturated_fat}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Cholesterol: ${snapshot.data!.nf_cholesterol}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Sodium: ${snapshot.data!.nf_sodium}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Total Carbohydrate: ${snapshot.data!.nf_total_carbohydrate}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Dietary Fiber: ${snapshot.data!.nf_dietary_fiber}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Sugars: ${snapshot.data!.nf_sugars}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Protein: ${snapshot.data!.nf_protein}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Potassium: ${snapshot.data!.nf_potassium}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'P: ${snapshot.data!.nf_p}',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
           );
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }
 
-        // By default, show a loading spinner.
-        return const CircularProgressIndicator();
+        // By default, show a loading spinner at the center of the screen
+
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }

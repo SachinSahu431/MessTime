@@ -67,30 +67,121 @@ class _DisplayMenuState extends State<DisplayMenu> {
           return ExpansionTile(
             title: Text(intToDay(index)),
             children: [
-              //3 for breakfast, lunch and dinner each having the food items from menu.dart
-              for (int i = 0; i < 3; i++)
-                ExpansionTile(
-                  title: Text(intToMeal(i)),
-                  //just display the food items
-                  children: [
-                    if (getFoodItems(index, i) != null)
-                      for (int j = 0; j < getFoodItems(index, i)!.length; j++)
-                        ListTile(
-                          title: Text(getFoodItems(index, i)![j]),
-                          // onTap: () {
-                          //   //display the nutrition data of the food item
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => NutritionX(
-                          //         foodItem: getFoodItems(index,i)![j],
-                          //       ),
-                          //     ),
-                          //   );
-                          // },
-                        ),
-                  ],
-                ),
+              //title for breakfast
+              Text(intToMeal(0),
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red)),
+              //table of fooditems for breakfast containing 4 items in each row
+              //add color to the table
+
+              Table(
+                border: TableBorder.all(),
+                children: [
+                  for (int i = 0; i < getFoodItems(index, 0)!.length; i += 4)
+                    TableRow(
+                      children: [
+                        for (int j = i; j < i + 4; j++)
+                          if (j < getFoodItems(index, 0)!.length)
+                            //display the nutrition data when the fooditem is clicked
+                            GestureDetector(
+                              onTap: () {
+                                //navigate to nutritionx page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => NutritionX(
+                                        day: index, meal: 0, index: j),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(getFoodItems(index, 0)![j]),
+                              ),
+                            )
+                      ],
+                    ),
+                ],
+              ),
+
+              //title for lunch
+              Text(intToMeal(1),
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red)),
+              //table of fooditems for lunch containing 4 items in each row
+
+              Table(
+                border: TableBorder.all(),
+                children: [
+                  for (int i = 0; i < getFoodItems(index, 1)!.length; i += 4)
+                    TableRow(
+                      children: [
+                        for (int j = i; j < i + 4; j++)
+                          if (j < getFoodItems(index, 1)!.length)
+                            //display the nutrition data when the fooditem is clicked
+                            GestureDetector(
+                              onTap: () {
+                                //navigate to nutritionx page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => NutritionX(
+                                        day: index, meal: 1, index: j),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(getFoodItems(index, 1)![j]),
+                              ),
+                            )
+                      ],
+                    ),
+                ],
+              ),
+
+              //title for dinner
+              Text(intToMeal(2),
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red)),
+
+              //table of fooditems for dinner containing 4 items in each row
+
+              Table(
+                border: TableBorder.all(),
+                children: [
+                  for (int i = 0; i < getFoodItems(index, 2)!.length; i += 4)
+                    TableRow(
+                      children: [
+                        for (int j = i; j < i + 4; j++)
+                          if (j < getFoodItems(index, 2)!.length)
+                            //display the nutrition data when the fooditem is clicked
+                            GestureDetector(
+                              onTap: () {
+                                //navigate to nutritionx page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => NutritionX(
+                                        day: index, meal: 2, index: j),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(getFoodItems(index, 2)![j]),
+                              ),
+                            )
+                      ],
+                    ),
+                ],
+              ),
             ],
           );
         },
@@ -112,3 +203,23 @@ class _DisplayMenuState extends State<DisplayMenu> {
 //     );
 //   },
 // ),
+// Table(
+// children: [
+// for (var food in getFoodItems(index, 0)!)
+// TableRow(children: [
+// //button to display nutrition data
+// ElevatedButton(
+// onPressed: () {
+// //display nutrition data
+// Navigator.push(
+// context,
+// MaterialPageRoute(
+// builder: (context) =>
+// NutritionX(day: index, meal: 0),
+// ),
+// );
+// },
+// child: Text(food),
+// ),
+// ]),
+// ],
