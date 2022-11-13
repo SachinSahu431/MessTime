@@ -13,13 +13,13 @@ class MessCardDeck extends StatelessWidget {
       padding: const EdgeInsets.only(top: 30.0, left: 5.0, right: 5.0),
       child: Column(children: [
         InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => NutrientChart()),
-            );
-          },
-          child: MessCard('Siddhartha G', 'CS20B040', 'NOVEMBER', '2022'),
+          // onTap: () {
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(builder: (context) => NutrientChart()),
+          //   );
+          // },
+          child: MessCard('Anush Mangal', 'CS20B054', 'DEC', '2022'),
         ),
         Card(
           elevation: 0.0,
