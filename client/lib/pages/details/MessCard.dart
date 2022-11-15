@@ -13,7 +13,6 @@ class MessCard extends StatelessWidget {
   String month = 'JANUARY';
   String year = '2022';
 
-
   final Color _color = Color.fromARGB(204, 0, 0, 0);
   final Color _textColor = Colors.white;
 
@@ -23,7 +22,7 @@ class MessCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime date = DateTime.now();
-    var day = date.weekday-1;
+    var day = date.weekday - 1;
     var hour = date.hour;
     // print("hour is ${hour}");
     var isBreakfastCalled = 0;
@@ -37,8 +36,8 @@ class MessCard extends StatelessWidget {
         child: Container(
             height: 170,
             width: 500,
-            padding:
-                const EdgeInsets.only(left: 10.0, right: 16.0, top: 15.0, bottom: 20.0),
+            padding: const EdgeInsets.only(
+                left: 10.0, right: 16.0, top: 15.0, bottom: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,50 +70,51 @@ class MessCard extends StatelessWidget {
                       Text(name.toUpperCase(),
                           style: GoogleFonts.inconsolata(
                               textStyle: TextStyle(
-                                color: _textColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ))),
+                            color: _textColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ))),
                       Text(rollno.toUpperCase(),
                           style: GoogleFonts.inconsolata(
                               textStyle: TextStyle(
-                                color: _textColor,
-                                fontSize: 16,
-                              ))),
+                            color: _textColor,
+                            fontSize: 16,
+                          ))),
                       Text("${month.toUpperCase()} ${year.toUpperCase()}",
                           style: GoogleFonts.inconsolata(
                               textStyle: TextStyle(
-                                color: _textColor,
-                                fontSize: 16,
-                              ))),
+                            color: _textColor,
+                            fontSize: 16,
+                          ))),
                     ],
                   ),
                 ),
 
                 Padding(
                   padding:
-                  const EdgeInsets.only(top: 16.0, left: 10.0, right: 10.0),
+                      const EdgeInsets.only(top: 16.0, left: 10.0, right: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       InkWell(
                         onTap: () {
-                          if(hour >= 8){
-                          if(isBreakfastCalled == 0 ){
-                            isBreakfastCalled = 1;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Breakfast(day: day, meal:0 )),
-                          );
-                          }
-                          else
-                            {
+                          if (hour >= 8) {
+                            if (isBreakfastCalled == 0) {
+                              isBreakfastCalled = 1;
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Breakfast(day: day, meal: 0)),
+                              );
+                            } else {
                               // show popup it cannot be opened
                               showDialog(
                                 context: context,
                                 builder: (ctx) => AlertDialog(
                                   title: const Text("Breakfast Already Done"),
-                                  content: const Text("You have already marked your breakfast"),
+                                  content: const Text(
+                                      "You have already marked your breakfast"),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () {
@@ -129,57 +129,14 @@ class MessCard extends StatelessWidget {
                                   ],
                                 ),
                               );
-                            }}
-                          else
-                            {
-                              showDialog(
-                                context: context,
-                                builder: (ctx) => AlertDialog(
-                                  title: const Text("Breakfast Not Started"),
-                                  content: const Text("Breakfast has not started yet. You can only fill it after 08:00"),
-                                  actions: <Widget>[
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(ctx).pop();
-                                      },
-                                      child: Container(
-                                        color: Colors.white,
-                                        padding: const EdgeInsets.all(14),
-                                        child: const Text("Okay"),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
                             }
-                        },
-                        child: Icon(
-                          Icons.breakfast_dining,
-                          color: _textColor,
-                          size: 50.0,
-
-                        ),
-                      ),
-
-                      InkWell(
-                        onTap: () {
-                          // starting time of lunch is 1 PM
-                        if(hour >= 13){
-                          if(isLunchCalled == 0 ){
-                            isLunchCalled = 1;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Lunch(day: day, meal:1 )),
-                          );
-                          }
-                          else
-                          {
-                            // show popup it cannot be opened
+                          } else {
                             showDialog(
                               context: context,
                               builder: (ctx) => AlertDialog(
-                                title: const Text("Lunch Already Done"),
-                                content: const Text("You have already marked your lunch"),
+                                title: const Text("Breakfast Not Started"),
+                                content: const Text(
+                                    "Breakfast has not started yet. You can only fill it after 08:00"),
                                 actions: <Widget>[
                                   TextButton(
                                     onPressed: () {
@@ -188,20 +145,62 @@ class MessCard extends StatelessWidget {
                                     child: Container(
                                       color: Colors.white,
                                       padding: const EdgeInsets.all(14),
-                                      child: const Text("okay"),
+                                      child: const Text("Okay"),
                                     ),
                                   ),
                                 ],
                               ),
                             );
-                          }}
-                        else
-                          {
+                          }
+                        },
+                        child: Icon(
+                          Icons.breakfast_dining,
+                          color: _textColor,
+                          size: 50.0,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          // starting time of lunch is 1 PM
+                          if (hour >= 13) {
+                            if (isLunchCalled == 0) {
+                              isLunchCalled = 1;
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Lunch(day: day, meal: 1)),
+                              );
+                            } else {
+                              // show popup it cannot be opened
+                              showDialog(
+                                context: context,
+                                builder: (ctx) => AlertDialog(
+                                  title: const Text("Lunch Already Done"),
+                                  content: const Text(
+                                      "You have already marked your lunch"),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(ctx).pop();
+                                      },
+                                      child: Container(
+                                        color: Colors.white,
+                                        padding: const EdgeInsets.all(14),
+                                        child: const Text("okay"),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          } else {
                             showDialog(
                               context: context,
                               builder: (ctx) => AlertDialog(
                                 title: const Text("Lunch Not Started"),
-                                content: const Text("Lunch has not started yet. You can only fill it after 08:00"),
+                                content: const Text(
+                                    "Lunch has not started yet. You can only fill it after 13:00"),
                                 actions: <Widget>[
                                   TextButton(
                                     onPressed: () {
@@ -222,53 +221,28 @@ class MessCard extends StatelessWidget {
                           Icons.lunch_dining,
                           color: _textColor,
                           size: 50.0,
-
                         ),
                       ),
-
                       InkWell(
                         onTap: () {
                           // starting time of dinner is 8 PM
-                          if(hour>=20){
-                          if(isDinnerCalled == 0 ){
-                            isDinnerCalled = 1;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Dinner(day: day, meal:2 )),
-                            );
-                          }
-                          else
-                          {
-                            // show notification that it cannot be opened
-                            showDialog(
-                              context: context,
-                              builder: (ctx) => AlertDialog(
-                                title: const Text("Dinner Already Done"),
-                                content: const Text("You have already marked your dinner"),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(ctx).pop();
-                                    },
-                                    child: Container(
-                                      color: Colors.white,
-                                      padding: const EdgeInsets.all(14),
-                                      child: const Text("okay"),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-
-
-                          }}
-                          else
-                            {
+                          if (hour >= 20) {
+                            if (isDinnerCalled == 0) {
+                              isDinnerCalled = 1;
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Dinner(day: day, meal: 2)),
+                              );
+                            } else {
+                              // show notification that it cannot be opened
                               showDialog(
                                 context: context,
                                 builder: (ctx) => AlertDialog(
-                                  title: const Text("Dinner Not Started"),
-                                  content: const Text("Dinner has not started yet. You can only fill it after 08:00"),
+                                  title: const Text("Dinner Already Done"),
+                                  content: const Text(
+                                      "You have already marked your dinner"),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () {
@@ -277,29 +251,46 @@ class MessCard extends StatelessWidget {
                                       child: Container(
                                         color: Colors.white,
                                         padding: const EdgeInsets.all(14),
-                                        child: const Text("Okay"),
+                                        child: const Text("okay"),
                                       ),
                                     ),
                                   ],
                                 ),
                               );
                             }
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (ctx) => AlertDialog(
+                                title: const Text("Dinner Not Started"),
+                                content: const Text(
+                                    "Dinner has not started yet. You can only fill it after 20:00"),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(ctx).pop();
+                                    },
+                                    child: Container(
+                                      color: Colors.white,
+                                      padding: const EdgeInsets.all(14),
+                                      child: const Text("Okay"),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
                         },
                         child: Icon(
                           Icons.dinner_dining,
                           color: _textColor,
                           size: 50.0,
-
                         ),
                       ),
-
                     ],
                   ),
-
                 ),
-
-
-                ],
+              ],
             )));
   }
 }
