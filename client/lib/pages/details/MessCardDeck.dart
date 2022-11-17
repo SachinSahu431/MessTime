@@ -19,7 +19,7 @@ class MessCardDeck extends StatelessWidget {
           //     MaterialPageRoute(builder: (context) => NutrientChart()),
           //   );
           // },
-          child: MessCard('Anush Mangal', 'CS20B054', 'DEC', '2022'),
+          child: MessCard('Ganesh Priyatham', 'CS20B026', 'DEC', '2022'),
         ),
         Card(
           elevation: 0.0,
