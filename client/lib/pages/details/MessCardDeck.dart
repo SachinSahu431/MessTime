@@ -1,3 +1,4 @@
+import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:client/pages/details/NutrientChart.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,8 +33,12 @@ class _MessCardDeckState extends State<MessCardDeck> {
 
   @override
   Widget build(BuildContext context) {
+    double getVal() {
+      return (double.parse(Calories[4])) / 2500;
+    }
+
     return Container(
-      padding: const EdgeInsets.only(top: 30.0, left: 5.0, right: 5.0),
+      padding: const EdgeInsets.only(top: 0.0, left: 5.0, right: 5.0),
       child: Column(children: [
         InkWell(
           // onTap: () {
@@ -57,28 +62,49 @@ class _MessCardDeckState extends State<MessCardDeck> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "Nutrient Analysis",
+                        "Calorie Analysis",
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        "20/30",
-                        style: TextStyle(color: Colors.green, fontSize: 20.0),
-                        textAlign: TextAlign.end,
-                      )
                     ],
                   ),
-                  NutrientChart(
-                      carbPercentage: 20,
-                      proteinPercentage: 4,
-                      vitaminPercentage: 36,
-                      fatPercentage: 40),
+
+                  // NutrientChart(
+                  //     carbPercentage: 20,
+                  //     proteinPercentage: 4,
+                  //     vitaminPercentage: 36,
+                  //     fatPercentage: 40),
                   //display the calories list
+                  Container(
+                    padding: const EdgeInsets.only(
+                        top: 30.0, left: 0.0, right: 0.0, bottom: 30.0),
+                    height: 200,
+                    child: Sparkline(
+                      data: Calories.map((e) => double.parse(e)).toList(),
+                      lineWidth: 3.0,
+                      lineColor: Colors.blue,
+                      pointsMode: PointsMode.all,
+                      pointSize: 10.0,
+                      pointColor: Colors.red,
+                      fillMode: FillMode.below,
+                      fillColor: Colors.blue[200]!,
+                      fillGradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.lightGreen[200]!,
+                          Colors.lightGreen[50]!
+                        ],
+                      ),
+                      gridLineLabelPrecision: 5,
+                      enableGridLines: true,
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        "Calories",
+                        "Daily Calorie Intake",
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),
@@ -89,6 +115,19 @@ class _MessCardDeckState extends State<MessCardDeck> {
                         textAlign: TextAlign.end,
                       )
                     ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        LinearProgressIndicator(
+                          backgroundColor: Colors.redAccent,
+                          value: getVal(),
+                          minHeight: 15,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               )),
