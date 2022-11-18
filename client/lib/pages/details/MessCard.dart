@@ -21,8 +21,7 @@ class MessCard extends StatefulWidget {
 }
 
 class _MessCardState extends State<MessCard> {
-  final Color _color = Color.fromARGB(204, 0, 0, 0);
-
+  final Color _color = Colors.lightBlue[900]!;
   final Color _textColor = Colors.white;
 
   int breakfastMarked = 0;
@@ -139,7 +138,7 @@ class _MessCardState extends State<MessCard> {
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
         child: Container(
-            height: 170,
+            height: 200,
             width: 500,
             padding: const EdgeInsets.only(
                 left: 10.0, right: 16.0, top: 15.0, bottom: 20.0),
@@ -198,7 +197,7 @@ class _MessCardState extends State<MessCard> {
 
                 Padding(
                   padding:
-                      const EdgeInsets.only(top: 16.0, left: 10.0, right: 10.0),
+                      const EdgeInsets.only(top: 0.0, left: 10.0, right: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

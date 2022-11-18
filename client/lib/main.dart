@@ -41,7 +41,6 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const MessCardDeck(),
             ElevatedButton(
@@ -51,7 +50,10 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const DisplayMenu()),
                 );
               },
-              child: const Text('Display Menu'),
+              child: Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text('Display Menu',
+                      style: TextStyle(fontSize: 20))),
             ),
           ],
         ),

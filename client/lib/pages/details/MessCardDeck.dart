@@ -38,15 +38,9 @@ class _MessCardDeckState extends State<MessCardDeck> {
     }
 
     return Container(
-      padding: const EdgeInsets.only(top: 0.0, left: 5.0, right: 5.0),
+      padding: const EdgeInsets.only(top: 15.0, left: 5.0, right: 5.0),
       child: Column(children: [
         InkWell(
-          // onTap: () {
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(builder: (context) => NutrientChart()),
-          //   );
-          // },
           child: MessCard('Ganesh Priyatham', 'CS20B026', 'DEC', '2022'),
         ),
         Card(
@@ -60,12 +54,14 @@ class _MessCardDeckState extends State<MessCardDeck> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "Calorie Analysis",
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold),
-                      ),
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: const Text(
+                            "Calorie Analysis",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.bold),
+                          ))
                     ],
                   ),
 
@@ -100,24 +96,27 @@ class _MessCardDeckState extends State<MessCardDeck> {
                       enableGridLines: true,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Daily Calorie Intake",
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        Calories[4],
-                        style: const TextStyle(
-                            color: Colors.green, fontSize: 20.0),
-                        textAlign: TextAlign.end,
-                      )
-                    ],
+                  Container(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Daily Calorie Intake",
+                          style: TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          Calories[4],
+                          style: const TextStyle(
+                              color: Colors.green, fontSize: 20.0),
+                          textAlign: TextAlign.end,
+                        )
+                      ],
+                    ),
                   ),
                   Container(
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(top: 0, bottom: 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
