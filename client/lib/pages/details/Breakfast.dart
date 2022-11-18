@@ -6,7 +6,7 @@ import '../Data/menu.dart';
 import '../DisplayMenu.dart';
 import 'MessCardDeck.dart';
 import '../../main.dart';
-
+// static version of calorific intake
 var calorie = {
   "Omelette": 323,
   "Bread": 77,
@@ -135,11 +135,6 @@ class _BreakfastUtilState extends State<BreakfastUtil> {
       }
     }
 
-    // mySingleValueList.add(FlutterLimitedCheckBoxModel(isSelected: false,  selectTitle: 'Option-1', selectId: 1));
-    // mySingleValueList.add(FlutterLimitedCheckBoxModel(isSelected: false,  selectTitle: 'Option-2', selectId: 2));
-    // mySingleValueList.add(FlutterLimitedCheckBoxModel(isSelected: false,  selectTitle: 'Option-3', selectId: 3));
-    // mySingleValueList.add(FlutterLimitedCheckBoxModel(isSelected: false,  selectTitle: 'Option-4', selectId: 4));
-    // mySingleValueList.add(FlutterLimitedCheckBoxModel(isSelected: false,  selectTitle: 'Option-5', selectId: 5));
     super.initState();
   }
 
