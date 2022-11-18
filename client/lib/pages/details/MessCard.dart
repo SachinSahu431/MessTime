@@ -146,26 +146,7 @@ class _MessCardState extends State<MessCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Padding(
-                //   padding:
-                //       const EdgeInsets.only(top: 16.0, left: 10.0, right: 10.0),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Icon(
-                //         Icons.restaurant,
-                //         color: _textColor,
-                //         size: 30.0,
-                //       ),
-                //       Icon(
-                //         Icons.credit_card_rounded,
-                //         color: _textColor,
-                //         size: 30.0,
-                //       ),
-                //     ],
-                //   ),
-                //
-                // ),
+              
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: Column(
