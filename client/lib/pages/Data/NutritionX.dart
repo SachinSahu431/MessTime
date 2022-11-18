@@ -22,8 +22,7 @@ Future<CalorieData> fetchCalorieData(String foodName) async {
   if (response.statusCode == 200) {
     try {
       return CalorieData.fromJson(jsonDecode(response.body));
-    }
-    on Exception catch(_) {
+    } on Exception catch (_) {
       // print("Here2");
       return CalorieData.getDefault(jsonDecode(response.body));
     }
@@ -140,8 +139,6 @@ class _NutritionXState extends State<NutritionX> {
     futureCalorieData = fetchCalorieData(foodName);
   }
 
-
-
   // Future<int> getCalorie(String foodName) async {
   //   final response = await http.post(
   //       Uri.parse('https://trackapi.nutritionix.com/v2/natural/nutrients'),
@@ -161,7 +158,6 @@ class _NutritionXState extends State<NutritionX> {
   //   }
   // }
 
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<CalorieData>(
@@ -169,67 +165,316 @@ class _NutritionXState extends State<NutritionX> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           //show the data at the center of the screen
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Food Name: ${snapshot.data!.food_name}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Serving Unit: ${snapshot.data!.serving_unit}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Serving Quantity: ${snapshot.data!.serving_qty}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Calories: ${snapshot.data!.nf_calories}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Total Fat: ${snapshot.data!.nf_total_fat}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Saturated Fat: ${snapshot.data!.nf_saturated_fat}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Cholesterol: ${snapshot.data!.nf_cholesterol}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Sodium: ${snapshot.data!.nf_sodium}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Total Carbohydrate: ${snapshot.data!.nf_total_carbohydrate}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Dietary Fiber: ${snapshot.data!.nf_dietary_fiber}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Sugars: ${snapshot.data!.nf_sugars}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Protein: ${snapshot.data!.nf_protein}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Potassium: ${snapshot.data!.nf_potassium}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'P: ${snapshot.data!.nf_p}',
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Food Item: ${snapshot.data!.food_name}'),
+            ),
+            body: Container(
+              padding: const EdgeInsets.all(8.0),
+              child: Table(
+                border: TableBorder.all(),
+                children: [
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Serving Unit',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.serving_unit,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Serving Quantity',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.serving_qty.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Calories',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_calories.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Total Fat',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_total_fat.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Saturated Fat',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_saturated_fat.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Cholesterol',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_cholesterol.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Sodium',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_sodium.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Total Carbohydrate',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_total_carbohydrate.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Dietary Fiber',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_dietary_fiber.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Sugars',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_sugars.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Protein',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_protein.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'Potassium',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_potassium.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
+                            'P',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshot.data!.nf_p.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         } else if (snapshot.hasError) {
