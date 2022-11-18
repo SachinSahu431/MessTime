@@ -6,6 +6,74 @@ import '../Data/menu.dart';
 import '../DisplayMenu.dart';
 import 'MessCardDeck.dart';
 
+var calorie = {
+"Omelette": 323,
+"Bread": 77,
+"Butter": 101,
+"Jam": 55,
+"Tea": 50,
+"Coffee": 2,
+"Milk": 122,
+"Banana": 105,
+"Moong": 212,
+"Idli": 58,
+"Vada": 134,
+"Sambhar": 259,
+"Rice": 205,
+"Dal": 221,
+"Salad": 19,
+"Roti": 119,
+"Curd": 69,
+"Mixed veg": 45,
+"Brinjal": 198,
+"Ladyfinger": 50,
+"Egg": 71,
+"Korma": 460,
+"Rasam": 64,
+"Suji halwa": 317,
+"Kheer": 131,
+"Crisps": 148,
+"Upma": 132,
+"Aloo curry": 204,
+"poori": 140,
+"Sprouts": 7,
+"Bitter gourd": 23,
+"Tomato curry": 172,
+"Soya bean": 295,
+"Dum aloo": 50,
+"Ice cream": 273,
+"Pickle": 4,
+"Poha": 157,
+"Rajma": 252,
+"Dal Makhani": 426,
+"Chicken curry": 243,
+"Paneer": 364,
+"Aloo paratha": 300,
+"Beetroot": 22,
+"Aloo matar": 50,
+"Manchurian": 50,
+"Drumstick curry": 136,
+"Khichdi": 238,
+"Pongal": 318,
+"Chutney": 20,
+"Raita": 31,
+"Chole bhature": 510,
+"Chole": 280,
+"Lemon rice": 221,
+"Papaya": 62,
+"Dosa": 167,
+"Malai kofta": 73,
+"Potato": 160,
+"Chana masala": 280,
+"Coconut ladoo": 387,
+"Uttapam": 50,
+"Chicken Biryani": 291,
+"Veg Biryani": 198,
+"Cabbage": 17,
+"Matar masala": 149
+};
+
+
 void main() {
   runApp(const Dinner(day: 0, meal:2));
 }
@@ -110,10 +178,10 @@ class _DinnerUtilState extends State<DinnerUtil> {
           for (var element in mySelectedList) {
             // print(element.selectId);
             // print(element.selectTitle);
-            futureCalorieData = await fetchCalorieData(element.selectTitle);
-            var xx = futureCalorieData.nf_calories.toString();
-            var yele = int.parse(xx);
-            // print(xx.runtimeType);
+            var xx = calorie[element.selectTitle];
+            var xxx = xx.toString();
+            var yele = int.parse(xxx);
+
             // print(yele.runtimeType);
             totalDinnerCalories+=yele;
             // print(futureCalorieData.nf_calories);

@@ -206,7 +206,9 @@ class _MessCardState extends State<MessCard> {
                         onTap: () {
                           if (hour >= 8) {
                             if (breakfastMarked == 0) {
-                              //breakfastMarked = 1;
+                              setState(() {
+                                breakfastMarked = 1;
+                              });
                               saveMarked(0);
                               Navigator.push(
                                 context,
@@ -273,7 +275,9 @@ class _MessCardState extends State<MessCard> {
                           // starting time of lunch is 1 PM
                           if (hour >= 13) {
                             if (lunchMarked == 0) {
-                              //lunchMarked = 1;
+                              setState(() {
+                                lunchMarked = 1;
+                              });
                               saveMarked(1);
                               Navigator.push(
                                 context,
@@ -330,7 +334,7 @@ class _MessCardState extends State<MessCard> {
                         child: Icon(
                           Icons.lunch_dining,
                           color:
-                              breakfastMarked == 0 ? _textColor : Colors.green,
+                              lunchMarked == 0 ? _textColor : Colors.green,
                           size: 50.0,
                         ),
                       ),
@@ -339,7 +343,9 @@ class _MessCardState extends State<MessCard> {
                           // starting time of dinner is 8 PM
                           if (hour >= 20) {
                             if (dinnerMarked == 0) {
-                              //dinnerMarked = 1;
+                              setState(() {
+                                dinnerMarked = 1;
+                              });
                               saveMarked(2);
                               Navigator.push(
                                 context,
@@ -396,7 +402,7 @@ class _MessCardState extends State<MessCard> {
                         child: Icon(
                           Icons.dinner_dining,
                           color:
-                              breakfastMarked == 0 ? _textColor : Colors.green,
+                              dinnerMarked == 0 ? _textColor : Colors.green,
                           size: 50.0,
                         ),
                       ),
