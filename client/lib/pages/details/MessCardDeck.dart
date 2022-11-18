@@ -1,11 +1,34 @@
 import 'package:client/pages/details/NutrientChart.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'MessCard.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class MessCardDeck extends StatelessWidget {
+class MessCardDeck extends StatefulWidget {
   const MessCardDeck({Key? key}) : super(key: key);
+
+  @override
+  State<MessCardDeck> createState() => _MessCardDeckState();
+}
+
+class _MessCardDeckState extends State<MessCardDeck> {
+  List<String> Calories = ['0', '0', '0', '0', '0', '0', '0'];
+
+  Future<void> getCaloriesList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      Calories = prefs.getStringList('Calories') ??
+          ['0', '0', '0', '0', '0', '0', '0'];
+    });
+  }
+
+  //init
+  @override
+  void initState() {
+    super.initState();
+    getCaloriesList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +73,23 @@ class MessCardDeck extends StatelessWidget {
                       proteinPercentage: 4,
                       vitaminPercentage: 36,
                       fatPercentage: 40),
+                  //display the calories list
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Calories",
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        Calories[4],
+                        style: const TextStyle(
+                            color: Colors.green, fontSize: 20.0),
+                        textAlign: TextAlign.end,
+                      )
+                    ],
+                  ),
                 ],
               )),
         )

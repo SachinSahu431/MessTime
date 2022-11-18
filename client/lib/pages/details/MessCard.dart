@@ -210,11 +210,12 @@ class _MessCardState extends State<MessCard> {
                                 breakfastMarked = 1;
                               });
                               saveMarked(0);
-                              Navigator.push(
+                              Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         Breakfast(day: day, meal: 0)),
+                                (Route<dynamic> route) => false,
                               );
                             } else {
                               // show popup it cannot be opened
@@ -279,11 +280,12 @@ class _MessCardState extends State<MessCard> {
                                 lunchMarked = 1;
                               });
                               saveMarked(1);
-                              Navigator.push(
+                              Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         Lunch(day: day, meal: 1)),
+                                (Route<dynamic> route) => false,
                               );
                             } else {
                               // show popup it cannot be opened
@@ -333,8 +335,7 @@ class _MessCardState extends State<MessCard> {
                         },
                         child: Icon(
                           Icons.lunch_dining,
-                          color:
-                              lunchMarked == 0 ? _textColor : Colors.green,
+                          color: lunchMarked == 0 ? _textColor : Colors.green,
                           size: 50.0,
                         ),
                       ),
@@ -347,11 +348,12 @@ class _MessCardState extends State<MessCard> {
                                 dinnerMarked = 1;
                               });
                               saveMarked(2);
-                              Navigator.push(
+                              Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         Dinner(day: day, meal: 2)),
+                                (Route<dynamic> route) => false,
                               );
                             } else {
                               // show notification that it cannot be opened
@@ -401,8 +403,7 @@ class _MessCardState extends State<MessCard> {
                         },
                         child: Icon(
                           Icons.dinner_dining,
-                          color:
-                              dinnerMarked == 0 ? _textColor : Colors.green,
+                          color: dinnerMarked == 0 ? _textColor : Colors.green,
                           size: 50.0,
                         ),
                       ),
