@@ -25,17 +25,25 @@ Using the MessTime app, students can mark their meals, and the app analyzes and 
 
 ## Screenshots
 
-![Screenshot 1](https://github.com/SachinSahu431/MessTime/tree/main/docs/0.jpg)
-![Screenshot 2](https://github.com/SachinSahu431/MessTime/tree/main/docs/1.png)
-![Screenshot 3](https://github.com/SachinSahu431/MessTime/tree/main/docs/2.png)
-![Screenshot 4](https://github.com/SachinSahu431/MessTime/tree/main/docs/3.png)
-![Screenshot 5](https://github.com/SachinSahu431/MessTime/tree/main/docs/4.png)
-![Screenshot 6](https://github.com/SachinSahu431/MessTime/tree/main/docs/5.png)
-![Screenshot 7](https://github.com/SachinSahu431/MessTime/tree/main/docs/6.png)
-![Screenshot 8](https://github.com/SachinSahu431/MessTime/tree/main/docs/7.png)
+| Screenshot 1 | Screenshot 2 |
+|--------------|--------------|
+| ![Screenshot 1](https://github.com/SachinSahu431/MessTime/blob/main/docs/0.jpg) | ![Screenshot 2](https://github.com/SachinSahu431/MessTime/blob/main/docs/1.png) |
+
+| Screenshot 3 | Screenshot 4 |
+|--------------|--------------|
+| ![Screenshot 3](https://github.com/SachinSahu431/MessTime/blob/main/docs/2.png) | ![Screenshot 4](https://github.com/SachinSahu431/MessTime/blob/main/docs/3.png) |
+
+| Screenshot 5 | Screenshot 6 |
+|--------------|--------------|
+| ![Screenshot 5](https://github.com/SachinSahu431/MessTime/blob/main/docs/4.png) | ![Screenshot 6](https://github.com/SachinSahu431/MessTime/blob/main/docs/5.png) |
+
+| Screenshot 7 | Screenshot 8 |
+|--------------|--------------|
+| ![Screenshot 7](https://github.com/SachinSahu431/MessTime/blob/main/docs/6.png) | ![Screenshot 8](https://github.com/SachinSahu431/MessTime/blob/main/docs/7.png) |
+
 
 ---
 
 ## Documentation
 
-The documentation for the project can be found [here](https://github.com/SachinSahu431/MessTime/docs/messTime.pdf).
+The documentation for the project can be found [here](https://github.com/SachinSahu431/MessTime/blob/main/docs/messTime.pdf).
